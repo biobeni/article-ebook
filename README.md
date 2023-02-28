@@ -64,7 +64,7 @@ Usage
 -----
 
 ```
-usage: article-ebook [-h] [-u URL] [-d DOI] [-t TITLE] [-o FILE] [-p]
+usage: article-ebook [-h] [-u URL] [-d DOI] [-t TITLE] [-o FILE] [-f FORMAT] [-p]
 
 optional arguments:
   -h, --help  show this help message and exit
@@ -72,5 +72,6 @@ optional arguments:
   -d DOI      DOI of article
   -t TITLE    Title of article
   -o FILE     Name of output file
+  -f FORMAT   Format of output file
   -p          List supported publishers
 ```

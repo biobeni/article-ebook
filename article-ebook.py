@@ -13,6 +13,8 @@ parser.add_argument("-t",type=str,help='Title of article',
         default=None,metavar='TITLE')
 parser.add_argument("-o",type=str,help='Name of output file',
         default=None,metavar='FILE')
+parser.add_argument("-f",type=str,help='Format of output file',
+        default='epub',metavar='FORMAT')
 parser.add_argument("-p",help='List supported publishers',
         action="store_true")
 args = parser.parse_args()
@@ -37,7 +39,7 @@ def main():
     art = article_ebook.match_publisher(url=url,doi=args.d)
     art.soupify()
     art.extract_data()
-    art.epubify(args.o)
+    art.epubify(args.o,args.f)
     print('\nCitation: '+art.get_citation())
     print('Filename: '+art.output)
 

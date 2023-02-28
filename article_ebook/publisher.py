@@ -120,7 +120,7 @@ class Publisher(object):
         self.get_references()
         print('done')
 
-    def epubify(self,output=None):
+    def epubify(self,output=None,fileformat=None):
         """Convert data into epub format"""
 
         all_authors = ''
@@ -139,11 +139,17 @@ class Publisher(object):
         args.append('author="'+all_authors+'"')
         #args.append('--parse-raw')
         args.append('--webtex')
+
+        if fileformat == None:
+            fileformat = 'epub'
         
         if output == None:
-            self.output = self.author_surnames[0]+'_'+self.year+'.epub'
+            self.output = self.author_surnames[0]+'_'+self.year+'.'+fileformat
         else:
-            self.output = output
+            if output.endswith(fileformat):
+                self.output = output
+            else:
+                self.output = output+'.'+fileformat
         
         output_raw = os.path.join(tempfile.gettempdir(), 'raw.epub')
 
@@ -153,12 +159,17 @@ class Publisher(object):
         combined += str(self.body)
         combined += str(self.references)
         
-        print('Generating epub.............',end='',flush=True)
+        print('Generating ebook.............',end='',flush=True)
         epubout = pypandoc.convert_text(combined,format='html',to='epub+raw_html',
                 extra_args=args,
                 outputfile=output_raw)
-        subprocess.check_output(['ebook-convert',output_raw,self.output,
-            '--no-default-epub-cover'])
+
+        cmdline = ['ebook-convert',output_raw,self.output]
+
+        if self.output.endswith('.epub'):
+            cmdline.append('--no-default-epub-cover')
+
+        subprocess.check_output(cmdline)
         print('done')
 
 def register_publisher(publisher):
