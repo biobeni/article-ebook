@@ -27,6 +27,7 @@ Currently, the following publishers are supported:
 * Annual Reviews
 * Nature Publishing
 * University of Chicago Press
+* bioRxiv
 
 Dependencies
 ------------

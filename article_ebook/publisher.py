@@ -68,12 +68,18 @@ class Publisher(object):
             self.author_surnames.append(i['family'])
             self.author_givennames.append(i['given'])
 
-        self.journal = self.meta['container-title']
+        if 'institution' in self.meta.keys():
+            self.journal = self.meta['institution'][0]['name']
+        else:
+            self.journal = self.meta['container-title']
 
         if 'published-print' in self.meta.keys():
             self.year = str(self.meta['published-print']['date-parts'][0][0])
-        else:
+        elif 'published-online' in self.meta.keys():
             self.year = str(self.meta['published-online']['date-parts'][0][0])
+        else:
+            self.year = str(self.meta['published']['date-parts'][0][0])
+
         try:
             self.volume = str(self.meta['volume'])
         except:

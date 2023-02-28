@@ -11,3 +11,4 @@ from article_ebook.publishers.tandf import TandF
 from article_ebook.publishers.annualreviews import AnnualReviews
 from article_ebook.publishers.nature import Nature
 from article_ebook.publishers.uchicago import UChicago
+from article_ebook.publishers.biorxiv import bioRxiv
