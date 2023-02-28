@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import article_epub
+import article_ebook
 import sys
 import requests
 import argparse
@@ -19,7 +19,7 @@ args = parser.parse_args()
 
 def main():
     if args.p:
-        pubs = article_epub.list_publishers()
+        pubs = article_ebook.list_publishers()
         print('Available publishers:')
         for i in pubs:
             print('• '+i)
@@ -28,13 +28,13 @@ def main():
     if args.u != None:
         url = args.u
     elif args.d != None:
-        url = article_epub.url_from_doi(args.d)
+        url = article_ebook.url_from_doi(args.d)
     elif args.t != None:
-        url = article_epub.url_from_title(args.t)
+        url = article_ebook.url_from_title(args.t)
     else:
         sys.exit('Must provide URL, DOI or title')
     
-    art = article_epub.match_publisher(url=url,doi=args.d)
+    art = article_ebook.match_publisher(url=url,doi=args.d)
     art.soupify()
     art.extract_data()
     art.epubify(args.o)

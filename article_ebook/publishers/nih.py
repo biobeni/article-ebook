@@ -1,4 +1,4 @@
-from article_epub.publisher import Publisher, register_publisher
+from article_ebook.publisher import Publisher, register_publisher
 import requests
 import subprocess
 from bs4 import BeautifulSoup

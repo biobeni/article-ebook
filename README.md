@@ -1,4 +1,4 @@
-article-epub
+article-ebook
 ============
 
 Description
@@ -53,18 +53,18 @@ I plan to properly package the application for installation with `pip` in the fu
 2. Clone the repository:
 
     ```sh
-    git clone https://github.com/kenkellner/article-epub
+    git clone https://github.com/biobeni/article-ebook
     ```
 
-3. Make `article-epub.py` executable and put it in your `$PATH`.
+3. Make `article-ebook.py` executable and put it in your `$PATH`.
 
-4. To allow importing the library for use in other Python scripts, copy (or symlink) the `article_epub` folder into your local Python 3 library (e.g. `~/.local/lib/python3.6/site-packages/`).
+4. To allow importing the library for use in other Python scripts, copy (or symlink) the `article_ebook` folder into your local Python 3 library (e.g. `~/.local/lib/python3.6/site-packages/`).
 
 Usage
 -----
 
 ```
-usage: article-epub [-h] [-u URL] [-d DOI] [-t TITLE] [-o FILE] [-p]
+usage: article-ebook [-h] [-u URL] [-d DOI] [-t TITLE] [-o FILE] [-p]
 
 optional arguments:
   -h, --help  show this help message and exit
