@@ -1,5 +1,4 @@
-from selenium import webdriver
-from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver import Firefox
 from bs4 import BeautifulSoup
 import os 
 import sys
@@ -33,20 +32,7 @@ class Publisher(object):
         os.environ['MOZ_HEADLESS'] = '1'
         print('Starting headless browser...',end='',flush=True)
         
-        if(os.name == "posix"):
-            binary = FirefoxBinary('/usr/bin/firefox')
-        elif(os.name == "nt"):
-            binary = FirefoxBinary('C:/Program Files/Mozilla Firefox/firefox.exe')
-        else:
-            sys.exit("Error: Unknown OS")
-            
-        try:
-            driver = webdriver.Firefox(firefox_binary=binary, 
-                    log_path=os.path.join(tempfile.gettempdir(), 'gecko_log'))
-            print('done')
-        except:
-            sys.exit('Failed to load Firefox; is it installed?')
-        
+        driver = Firefox()
         print('Loading page................',end="",flush=True)
         try:
             driver.get(self.url)
