@@ -134,10 +134,9 @@ class Publisher(object):
 
         args = []
         args.append('-M')
-        args.append('title="'+self.title+'"')
+        args.append('title='+self.title)
         args.append('-M')
-        args.append('author="'+all_authors+'"')
-        #args.append('--parse-raw')
+        args.append('author='+all_authors)
         args.append('--webtex')
 
         if fileformat == None:
